@@ -9,7 +9,7 @@ spec:
   selector:
     app: myinsuranceappmazzie-az    
   ports:
-  - port: 5000
+  - port: 5050
     targetPort: http
     nodePort: 32410
     protocol: TCP    
