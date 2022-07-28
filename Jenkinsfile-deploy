@@ -30,14 +30,14 @@ pipeline {
         stage('Create image') {
             steps {
                 echo 'creating image...'    
-                sh 'docker build -t hackathonimages.azurecr.io/myinsuranceapp:v8 -f Dockerfile .'
+                sh 'docker build -t hackathonimages.azurecr.io/myinsuranceappmazzie:v8 -f Dockerfile .'
             }
         } 
         stage('Publish image') {
             steps {
                 echo 'pushing image..'              
                 withDockerRegistry([ credentialsId: "hackerthon-az-creds", url: "https://hackathonimages.azurecr.io" ]) {
-                    sh 'docker push hackathonimages.azurecr.io/myinsuranceapp:v8'
+                    sh 'docker push hackathonimages.azurecr.io/myinsuranceappmazzie:v8'
                 }
             }
         }
