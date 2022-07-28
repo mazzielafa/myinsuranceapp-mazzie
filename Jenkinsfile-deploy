@@ -44,9 +44,9 @@ pipeline {
         stage('Apply Kubernetes ') {
             steps {
                 withKubeConfig([credentialsId: 'hackerthon-k8-credentials']) {   
-                    sh 'kubectl apply -f kubernetes/1_myinsuranceappmazzie_deployment.yaml'
+                    sh 'kubectl apply -f kubernetes/1-myinsuranceappmazzie-deployment.yaml'
 
-                    sh 'kubectl apply -f kubernetes/2_myinsuranceappmazzie_service.yaml'
+                    sh 'kubectl apply -f kubernetes/2-myinsuranceappmazzie-service.yaml'
                     
                     /*sh 'kubectl apply -f kubernetes/3_ins_app_deployment_az.yaml'
                     sh 'kubectl apply -f kubernetes/4_ins_app_service_az.yaml'*/

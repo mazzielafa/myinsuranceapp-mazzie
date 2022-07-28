@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myinsuranceappmazzie_deployment
+  name: myinsuranceappmazzie-deployment
   labels:
     app: myinsuranceappmazzie
 spec:
