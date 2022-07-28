@@ -43,7 +43,7 @@ pipeline {
         }
         stage('Apply Kubernetes ') {
             steps {
-                withKubeConfig([credentialsId: 'k8-practice-credentials']) {   
+                withKubeConfig([credentialsId: 'hackerthon-k8-credentials']) {   
                     // sh 'kubectl apply -f kubernetes/3_ins_app_deployment_az.yaml'
                     // sh 'kubectl apply -f kubernetes/4_ins_app_service_az.yaml'
                     // sh 'kubectl port-forward service/myinsapp 5000:5000 &'
