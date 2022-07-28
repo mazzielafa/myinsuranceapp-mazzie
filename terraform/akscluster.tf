@@ -27,7 +27,7 @@ resource "azurerm_kubernetes_cluster" "default" {
   }
 
   service_principal {
-    client_id     = var.APPID
+    client_id = var.APPID
     client_secret = var.PASSWORD
   }
 
