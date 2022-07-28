@@ -1,5 +1,5 @@
 resources:
-  - 1_myinsuranceappmazzie_deployment.yaml
-  - 2_myinsuranceappmazzie_service.yaml
-  - 3_myinsuranceappmazzie-deployment_az.yaml
-  - 4_myinsuranceappmazzie_service_az.yaml
+  - 1-myinsuranceappmazzie-deployment.yaml
+  - 2-myinsuranceappmazzie-service.yaml
+  - 3-myinsuranceappmazzie-deployment-az.yaml
+  - 4-myinsuranceappmazzie-service-az.yaml
