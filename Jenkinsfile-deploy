@@ -5,10 +5,10 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main',url: 'https://github.com/mazzielafa/myinsuranceapp-mazzie.git'
+                git branch: 'deploy',url: 'https://github.com/mazzielafa/myinsuranceapp-mazzie.git'
             }
         }        
-        stage('Requirements') {
+        /*stage('Requirements') {
             steps {
                 echo 'Installing dependencies...'
                 sh 'pip3 install -r requirements.txt'
@@ -26,37 +26,36 @@ pipeline {
                 echo 'Acceptance...'
                 sh 'python3 -m unittest discover -s tests/acceptance-flask -v'
             }
-        }     
+        }   */  
         stage('Create image') {
             steps {
-                echo 'creating image...'
-                sh 'docker build -t kubemazl/myinsuranceappmazzie:v8 -f Dockerfile .'
+                echo 'creating image...'    
+                sh 'docker build -t hackathonimages.azurecr.io/myinsuranceapp:v8 -f Dockerfile .'
             }
         } 
         stage('Publish image') {
             steps {
-                echo 'pushing image..'
-                withDockerRegistry([ credentialsId: "docker-hub-credentials", url: "" ]) {
-                    sh 'docker push kubemazl/myinsuranceappmazzie:v8'
+                echo 'pushing image..'              
+                withDockerRegistry([ credentialsId: "hackerthon-az-creds", url: "https://hackathonimages.azurecr.io" ]) {
+                    sh 'docker push hackathonimages.azurecr.io/myinsuranceapp:v8'
                 }
-               
             }
         }
-        // stage('Apply Kubernetes ') {
-        //     steps {
-        //         withKubeConfig([credentialsId: 'k8-practice-credentials']) {
-        //             sh 'kubectl apply -f kubernetes/1_ins_app_deployment.yaml'
-        //             sh 'kubectl apply -f kubernetes/2_ins_app_service.yaml'  
-        //             sh 'kubectl port-forward service/myinsapp 5000:5000 &'
-        //         }
+        stage('Apply Kubernetes ') {
+            steps {
+                withKubeConfig([credentialsId: 'k8-practice-credentials']) {   
+                    // sh 'kubectl apply -f kubernetes/3_ins_app_deployment_az.yaml'
+                    // sh 'kubectl apply -f kubernetes/4_ins_app_service_az.yaml'
+                    // sh 'kubectl port-forward service/myinsapp 5000:5000 &'
+                }
+            }
+        }
+        // stage('External acceptance tests') {
+        //     steps{
+        //         echo 'External acceptance tests...'
+        //         sh 'python3 -m unittest discover -s tests/acceptance-request -v'
         //     }
         // }
-        stage('External acceptance tests') {
-            steps{
-                echo 'External acceptance tests...'
-                sh 'python3 -m unittest discover -s tests/acceptance-request -v'
-            }
-        }
     }
     post {
         always {
@@ -73,4 +72,3 @@ pipeline {
         }
     }
 }
-
