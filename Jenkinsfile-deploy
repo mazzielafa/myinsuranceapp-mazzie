@@ -43,13 +43,14 @@ pipeline {
         }
         stage('Apply Kubernetes ') {
             steps {
-                withKubeConfig([credentialsId: 'hackerthon-k8-credentials']) {   
-                    sh 'kubectl apply -f kubernetes/1-myinsuranceappmazzie-deployment.yaml'
-                    sh 'kubectl apply -f kubernetes/2-myinsuranceappmazzie-service.yaml'
+                withKubeConfig([credentialsId: 'hackerthon-k8-credentials' /*, serverUrl:''*/]) {   
+                    // sh 'kubectl apply -f kubernetes/1-myinsuranceappmazzie-deployment.yaml'
+                    // sh 'kubectl apply -f kubernetes/2-myinsuranceappmazzie-service.yaml'
                     
+                    // working with AKS
                     sh 'kubectl apply -f kubernetes/3-myinsuranceappmazzie-deployment-az.yaml'
                     sh 'kubectl apply -f kubernetes/4-myinsuranceappmazzie-service-az.yaml'
-                    
+
                     sh 'kubectl port-forward service/myinsuranceappmazzie 5000:5050 &'
                 }
             }
