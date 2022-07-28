@@ -43,7 +43,7 @@ pipeline {
         }
         stage('Apply Kubernetes ') {
             steps {
-                withKubeConfig([credentialsId: 'hackerthon-k8-credentials', serverUrl:'']) {   
+                withKubeConfig([credentialsId: 'hackerthon-k8-credentials', serverUrl:'https://popular-orca-k8s-3086c122.hcp.eastasia.azmk8s.io']) {   
                     // sh 'kubectl apply -f kubernetes/1-myinsuranceappmazzie-deployment.yaml'
                     // sh 'kubectl apply -f kubernetes/2-myinsuranceappmazzie-service.yaml'
                     
