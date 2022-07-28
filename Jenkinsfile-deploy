@@ -50,7 +50,7 @@ pipeline {
                     
                     sh 'kubectl apply -f kubernetes/3-myinsuranceappmazzie-deployment-az.yaml'
                     sh 'kubectl apply -f kubernetes/4-myinsuranceappmazzie-service-az.yaml'
-                    sh 'kubectl port-forward service/myinsuranceappmazzie 5000:5050 &'
+                    sh 'kubectl port-forward service/myinsuranceappmazzie 5050:5000 &'
                 }
             }
         }
