@@ -11,6 +11,7 @@
 <!-- py project/init/init_db.py -->
 ## Run the server 
 - python3 runserver.py
+<!-- py runserver.py -->
   - Access web at: http://localhost:5000/
   - Access API at: http://localhost:5000/[Endpoint]
 
@@ -44,6 +45,7 @@
   <!-- py -m unittest discover -s tests/acceptance-flask -v -->
 - Acceptance tests from outside:
   - python3 -m unittest discover -s tests/acceptance-request -v
+  <!-- py -m unittest discover -s tests/acceptance-request -v -->
     - For this is necessary that the service be running
 - Load Tests:
   - k6 run sample-load-test.js
