@@ -2,14 +2,16 @@
 <!--  -->
 ## Install Dependencies
 - pip3 install -r requirements.txt
+<!-- pip install -r requirements.txt -->
   - If you have old version of project: 
     - pip3 uninstall -r requirements.txt
 
 ## Init database (before running the server)
 - python3 project/init/init_db.py
-
+<!-- py project/init/init_db.py -->
 ## Run the server 
 - python3 runserver.py
+<!-- py runserver.py -->
   - Access web at: http://localhost:5000/
   - Access API at: http://localhost:5000/[Endpoint]
 
@@ -40,8 +42,10 @@
   -  python3 -m unittest discover -s tests/unit -v
 - Acceptance tests from inside:
   - python3 -m unittest discover -s tests/acceptance-flask -v
+  <!-- py -m unittest discover -s tests/acceptance-flask -v -->
 - Acceptance tests from outside:
   - python3 -m unittest discover -s tests/acceptance-request -v
+  <!-- py -m unittest discover -s tests/acceptance-request -v -->
     - For this is necessary that the service be running
 - Load Tests:
   - k6 run sample-load-test.js
