@@ -16,12 +16,9 @@ class TestApp(unittest.TestCase):
         data = response.json     
         self.headers = {"Authorization": f"Bearer {self.token}"}
 
-    # def test_2_user_products(self):
-    #     url=f'{self.base_url}/users/1/products'
-    #     headers = {"Authorization":f"Bearer {TestApp.token}"}
-    #     response = requests.get(url)
-    #     data = response.json
-    #     self.assertEqual(response.status_code,200)
-      
-
-
+    def test_2_user_products(self):
+        url=f'{self.base_url}/users/1/products'
+        headers = {"Authorization":f"Bearer {TestApp.token}"}
+        response = requests.get(url)
+        data = response.json
+        self.assertEqual(response.status_code,200)
